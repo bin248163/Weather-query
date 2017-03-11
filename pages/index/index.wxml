@@ -1,0 +1,18 @@
+
+<!--index.wxml-->
+<!--view是wxml中最基本的一种视图容器，你可以把它理解为div一类的东西-->
+<view class="container">
+  <!--bindtap类似于vue里的v-on:click，用于处理页面元素的事件绑定，待会儿我们会在index.js里看到一个bindViewTap的方法-->
+  <view  bindtap="bindViewTap" class="userinfo">
+  <!--{{userInfo.avatarUrl}}这类的双花括号和vue简直是一模一样了，用来显示js中的变量，当然也可以包含一些简单的运算和逻辑判断，image你就理解为img标签好了-->
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <!--text可以理解为p标签，当然只是为了方便理解，上述所有的view/image/text等都是小程序预置的界面组件-->
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <!--wx:if完全可以理解为vue当中的v-if，哈哈，其实不如去学学vue吧，weather是一个对象变量，可以用点来访问其属性值-->
+  <view wx:if="{{weather.location}}" class="weather">
+    <text class="city">城市：{{weather.location.name}}</text>
+    <text class="condition">天气：{{weather.now.text}}</text>
+  </view>
+  <view class="bottom">点击头像以获取当前天气状况</view>
+</view>
